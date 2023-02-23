@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
-// import { StatusCodes } from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
+
 import * as yup from 'yup';
-interface ICidade { // tipando dado
+interface ICidade { // tipando dados
   nome: string;
   estado: string;
 }
@@ -28,7 +29,7 @@ export const Create = async (req: Request<{}, {}, ICidade>, res: Response) => {
       errors[error.path] = error.message;
     });
 
-    return res.json({ errors });
+    return res.status(StatusCodes.BAD_REQUEST).json({ errors });
   }
 
   console.log(validatedData);
