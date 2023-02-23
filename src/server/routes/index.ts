@@ -9,6 +9,6 @@ router.get('/', (req, res) => {
   return res.status(StatusCodes.ACCEPTED).send('Hello world!');
 });
 
-router.post('/cidades', CidadesController.Create);
+router.post('/cidades', CidadesController.createBodyValidator, CidadesController.Create);
 
 export { router };
