@@ -5,7 +5,7 @@ interface ICidade { // tipando dado
 
 export const Create = (req: Request<{}, {}, ICidade>, res: Response) => {
   // O dado passado no req é o dado passando na interface
-  console.log(req.body.nome);
+  console.log(req.body);
 
   return res.send('Create');
 }; 
