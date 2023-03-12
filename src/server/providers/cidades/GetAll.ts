@@ -1,7 +1,6 @@
 import { ETableNames } from '../../database/ETableName';
-import { Knex } from '../../database/knex';
 import { ICidade } from '../../database/models';
-
+import { Knex } from '../../database/knex';
 
 export const getAll = async (page: number, limit: number, filter: string, id = 0): Promise<ICidade[] | Error> => {
   try {

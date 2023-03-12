@@ -1,11 +1,11 @@
-import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { Request, Response } from 'express';
 
 import * as yup from 'yup';
 
+import { CidadesProvider } from '../../providers/cidades';
 import { validation } from '../../shared/middleware';
 import { ICidade } from '../../database/models';
-import { CidadesProvider } from '../../providers/cidades';
 
 interface IBodyProps extends Omit<ICidade, 'id'> {}
 

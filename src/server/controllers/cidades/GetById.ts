@@ -1,9 +1,10 @@
-import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { Request, Response } from 'express';
+
 import * as yup from 'yup';
 
-import { validation } from '../../shared/middleware';
 import { CidadesProvider } from '../../providers/cidades';
+import { validation } from '../../shared/middleware';
 
 interface IParamsProps {
   id?: number;
@@ -34,13 +35,6 @@ export const getById = async (req: Request<IParamsProps>, res: Response) => {
       }
     });
   }
-
-
-  if(Number(req.params.id) === 99999) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-    errors: {
-      default: 'Registro não encontrado',
-    }
-  });
 
   return res.status(StatusCodes.OK).send();
 };
