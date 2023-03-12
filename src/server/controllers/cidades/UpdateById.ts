@@ -26,7 +26,7 @@ export const updateById = async (req: Request<IParamsProps>, res: Response) => {
   if(!req.params.id) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       errors: {
-        default: 'Nenhum IF foi encontrado'
+        default: 'O parâmetro "id" precisa ser informado!'
       }
     });
   }
@@ -35,9 +35,11 @@ export const updateById = async (req: Request<IParamsProps>, res: Response) => {
   
   if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      default: result.message
+      errors: {
+        default: result.message
+      }
     });
-  } 
+  }
 
   return res.status(StatusCodes.NO_CONTENT).send();
 };
