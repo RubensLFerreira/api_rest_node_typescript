@@ -36,5 +36,5 @@ export const getById = async (req: Request<IParamsProps>, res: Response) => {
     });
   }
 
-  return res.status(StatusCodes.OK).send();
+  return res.status(StatusCodes.OK).json(result);
 };
