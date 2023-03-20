@@ -5,7 +5,7 @@ import * as GetAll from './GetAll';
 import * as GetById from './GetById';
 import * as UpdateById from './UpdateById';
 
-export const pessoaProvider = {
+export const PessoaProvider = {
   ...Count,
   ...Create,
   ...DeleteById,
