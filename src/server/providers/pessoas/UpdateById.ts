@@ -7,12 +7,12 @@ export const updateById = async (id: number, pessoa: Omit<IPessoa, 'id'>): Promi
   // vamos omitir o id qe é passado
   // vamos passar como promessa um númerico ou erro
   try {
-    const [{ count }] = await Knex(ETableNames.pessoa)
+    const [{ count }] = await Knex(ETableNames.cidade)
       .where('id', '=', pessoa.cidadeId) // id é igual ao id da cidade
       .count<[{ count: number }]>('* as count'); // pega a quantidade do tipo numerico
 
     // se a quantidade for maior qe 0 ele continua
-    if ( count === 0) {
+    if (count === 0) {
       return new Error('A cidade usada no cadastro não foi encontrado!');
     }
 

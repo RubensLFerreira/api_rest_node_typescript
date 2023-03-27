@@ -19,7 +19,7 @@ export const deleteByIdValidation = validation((getSchema) => ({
 
 export const deleteById = async (req: Request<IParamsProps>, res: Response) => {
 
-  if(!req.params.id) {
+  if (!req.params.id) {
     return res.status(StatusCodes.BAD_REQUEST).json({
       errors: {
         default: 'O parâmetro "id" precisa ser informado.',

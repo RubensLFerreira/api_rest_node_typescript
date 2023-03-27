@@ -5,10 +5,9 @@ export async function up(knex: Knex) {
   return knex
     .schema
     .createTable(ETableNames.pessoa, table => {
-      table.bigIncrements('id').primary().index(),
-      table.string('nome', 150).checkLength('<=', 150).index().notNullable();
-      table.string('sobrenome', 150).checkLength('<=', 150).index().notNullable();
-      table.string('email', 150).checkLength('<=', 150).unique().notNullable();
+      table.bigIncrements('id').primary().index();
+      table.string('nomeCompleto').index().notNullable();
+      table.string('email').unique().notNullable();
 
       table
         .bigInteger('cidadeId')

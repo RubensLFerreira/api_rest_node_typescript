@@ -18,7 +18,7 @@ export const getByIdValidation = validation((getSchema) => ({
 }));
 
 export const getById = async (req: Request<IParamsProps>, res: Response) => {
-  
+
   if (!req.params.id) {
     return res.status(StatusCodes.BAD_REQUEST).json({
       errors: {
@@ -26,10 +26,10 @@ export const getById = async (req: Request<IParamsProps>, res: Response) => {
       }
     });
   }
-  
+
   const result = await PessoaProvider.getById(req.params.id);
 
-  if(result instanceof Error) {
+  if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       errors: {
         default: result.message

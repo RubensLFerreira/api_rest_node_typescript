@@ -10,20 +10,19 @@ import { PessoaProvider } from '../../providers/pessoas';
 
 interface IBodyProps extends Omit<IPessoa, 'id'> { }
 
-export const createValidation = validation((getSchema) => ({
+export const createValidation = validation(getSchema => ({
   body: getSchema<IBodyProps>(yup.object().shape({
-    nome: yup.string().required().min(3).max(150),
-    sobrenome: yup.string().required().min(3).max(150),
     email: yup.string().required().email(),
-    cidadeId: yup.number().integer().required().moreThan(0),
+    cidadeId: yup.number().integer().required(),
+    nomeCompleto: yup.string().required().min(3),
   })),
 }));
 
-export const create = async (req: Request<{}, {}, IPessoa>, res: Response) => {
+export const create = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
   const result = await PessoaProvider.create(req.body);
 
   if (result instanceof Error) {
-    return res.status(StatusCodes.BAD_REQUEST).json({
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       errors: {
         default: result.message
       }
