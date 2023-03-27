@@ -2,5 +2,6 @@ export interface IPessoa {
   id: number;
   email: string;
   cidadeId: number;
-  nomeCompleto: string;
+  nome: string;
+  sobrenome: string;
 }
